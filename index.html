@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SSEC IntrusionX CTF 2025 | INTRA COLLEGE CTF</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Animations -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- CSS Styles -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0f1a;
+            color: #ffffff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: #66ff66;
+            text-decoration: none;
+        }
+
+        
+
+        header {
+            background: linear-gradient(90deg, #000 0%, #0f0f0f 100%);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid #1f1f1f;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-container .image-box {
+            flex: 1 1 40%;
+            max-width: 500px;
+            border: 1px solid #66ff66;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(102, 255, 102, 0.4);
+            padding: 10px;
+        }
+
+        .about-container .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-container .content-box {
+            flex: 1 1 50%;
+            color: #fff;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+
+        header h1 {
+            color: #00ff00;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            text-shadow: 0 0 15px #00ff00;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section h2 {
+            font-size: 2.8em;
+            color: #66ff66;
+            text-shadow: 0 0 5px #66ff66;
+            margin-bottom: 30px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight {
+            color: #66ff66;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #66ff66;
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(102, 255, 102, 0.2);
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #66ff66;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2.2em;
+            margin: 20px 0;
+        }
+
+        .countdown div {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #66ff66;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .register-btn {
+            display: inline-block;
+            background: #00ff00;
+            color: #000;
+            padding: 18px 36px;
+            font-size: 1.3em;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .register-btn:hover {
+            background: #66ff66;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 2px solid #1f1f1f;
+            font-size: 1em;
+            color: #999;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(10,15,26,0.9) 0%, rgba(0,0,0,0.9) 100%), url('https://media.giphy.com/media/eNAsjO55tPbgaor7ma/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+        }
+
+        .rules-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .rules-box {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #66ff66;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(102, 255, 102, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .rules-box h3 {
+            color: #66ff66;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .rules-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rules-box li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .rules-box li::before {
+            content: "✔";
+            color: #00ff00;
+            position: absolute;
+            left: 0;
+        }
+
+        .rules-box.prohibited li::before {
+            content: "⚠";
+            color: #ff3333;
+        }
+        .countdown-btn {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            margin-top: 20px; /* Space between countdown and button */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="matrix-bg"></div>
+
+    <!-- HEADER -->
+    <header data-aos="fade-down">
+        <h1>SSEC IntrusionX CTF 2025</h1>
+        <p class="highlight">INTRA COLLEGE CTF</p>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="section" data-aos="fade-up">
+        <h2>Event Details & Highlights</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+            <div style="flex: 1; min-width: 300px;" class="box">
+                <p><strong>Date:</strong> 08 August 2025 - Friday</p>
+                <p><strong>Recognition:</strong> <span class="highlight">Winner Certificate</span></p>
+                <p><strong>Venue:</strong> CC2 Lab</p>
+                <p><strong>Registration Fee:</strong> ₹50 /per participant</p>
+            </div>
+
+            <div style="flex: 1; min-width: 300px;" class="box">
+                <ul>
+                    <li>🔥 Real-world cybersecurity challenges</li>
+                    <li>🔥 Winner will receive official certification</li>
+                    <li>🔥 Hands-on practical learning experience</li>
+                    <li>🔥 Great opportunity to showcase skills & talent</li>
+                    <li>🔥 Build your resume with CTF participation</li>
+                    
+                </ul>
+            </div>
+        </div>
+        <a href="https://forms.gle/SzwEoutq1D6ktTyb9" class="register-btn" target="_blank">Register Now</a>
+    </section>
+
+    <!-- ABOUT -->
+    <!-- <section class="section" data-aos="fade-up">
+        <h2>About The <span class="highlight">Event</span></h2>
+        <p>
+            Join <span class="highlight">KPR CTF Challenge 2025</span>, South India's leading offline Capture The Flag (CTF) competition.
+            <br><br>
+            Hosted by the Department of Computer Science and Engineering at <span class="highlight">KPR Institute of Engineering and Technology</span>, in collaboration with EC Council, Sparkout, IEEE, and Hackup, this national-level event promises a true test of your cybersecurity skills.
+        </p>
+    </section> -->
+        <!-- ABOUT -->
+    <section class="section" data-aos="fade-up">
+        <h2>About The <span class="highlight">Event</span></h2>
+        <div class="about-container">
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/5380651/pexels-photo-5380651.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="CTF Event Image">
+            </div>
+                <div class="content-box">
+                    <p>
+                        Welcome to <span class="highlight">SSEC CTF 2025</span>, an exciting <span class="highlight">intra-college Capture the Flag (CTF) cybersecurity competition</span> designed for aspiring cybersecurity enthusiasts and ethical hackers.
+                    </p>
+                    <p>
+                        Hosted at <span class="highlight">CC2 Lab, SSEC Campus</span>, this hands-on event will challenge participants with real-world cybersecurity problems, encouraging learning, collaboration, and friendly competition.
+                    </p>
+                    <p>
+                        Participants will gain valuable practical skills, enjoy refreshments, and receive <span class="highlight">winner certifications</span>. Don't miss this opportunity to test your skills and connect with fellow cybersecurity enthusiasts!
+                    </p>
+                </div>
+
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="section" data-aos="fade-up">
+        <h2>CTF <span class="highlight">Rules</span></h2>
+        <div class="rules-container">
+            <div class="rules-box">
+                <h3>Competition Rules</h3>
+                <ul>
+                    <li>Team size must be between 2 and 4 members.</li>
+                    <li>Use of publicly available tools and resources is permitted.</li>
+                    <li>Collaboration within your team is encouraged.</li>
+                    <li>You may bring your own devices for the competition.</li>
+                    <li>Ask the organizers for clarification if you have questions.</li>
+                </ul>
+            </div>
+
+            <div class="rules-box prohibited">
+                <h3>Prohibited Actions</h3>
+                <ul>
+                    <li>Attacking the competition infrastructure is strictly forbidden.</li>
+                    <li>Sharing flags or solutions with other teams will result in immediate disqualification.</li>
+                    <li>Any form of cheating or unethical behavior is not tolerated.</li>
+                    <li>Interfering with other teams' ability to participate is prohibited.</li>
+                    <li>Performing any activity that could compromise the integrity of the competition.</li>
+                    <li>Using open source AI tools is prohibited</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO CAN JOIN -->
+    <section class="section" data-aos="fade-up">
+        <h2>Who Can <span class="highlight">Join?</span></h2>
+        <div class="about-container">
+            <div class="content-box">
+                <p>
+                    This CTF is for <span class="highlight">cybersecurity enthusiasts, ethical hackers, beginners, and students</span> alike.
+                </p>
+                <p>
+                    Open to all <span class="highlight">college and university students</span>. 
+                </p>
+                <p>
+                    <span class="highlight">Team size: 2-4 members.</span> If you are passionate about cybersecurity and want to challenge your skills, this is your stage!
+                </p>
+            </div>
+            <div class="image-box">
+                <img src="https://images.pexels.com/photos/5380607/pexels-photo-5380607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Who Can Join CTF Image">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- COUNTDOWN TIMER -->
+<!-- COUNTDOWN TIMER -->
+    <section class="section" data-aos="fade-up">
+        <h2>Registration <span class="highlight">Deadline</span></h2>
+        <div class="countdown" id="countdown">
+            <div><span id="days">0</span><br>DAYS</div>
+            <div><span id="hours">0</span><br>HOURS</div>
+            <div><span id="minutes">0</span><br>MINUTES</div>
+            <div><span id="seconds">0</span><br>SECONDS</div>
+        </div>
+        <div class="countdown-btn">
+            <a href="https://forms.gle/SzwEoutq1D6ktTyb9" class="register-btn" target="_blank">Register Now</a>
+        </div>
+    </section>
+
+
+    <!-- REGISTER -->
+    <section class="section" id="register" data-aos="fade-up">
+        <h2>Ready to <span class="highlight">Compete?</span></h2>
+        <p>Don't miss the most electrifying CTF of 2025. Register your team today!</p>
+        <a href="https://forms.gle/SzwEoutq1D6ktTyb9" class="register-btn" target="_blank">Register Your Team</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2025 SSEC CTF. Powered By Department of CSE(Cyber Security).
+    </footer>
+
+    <!-- AOS Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+        });
+    </script>
+
+    <!-- Countdown Timer -->
+    <script>
+        const countdown = () => {
+            const countDate = new Date("August 8, 2025 23:59:59").getTime();
+
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            let days = Math.floor(gap / day);
+            let hours = Math.floor((gap % day) / hour);
+            let minutes = Math.floor((gap % hour) / minute);
+            let seconds = Math.floor((gap % minute) / second);
+
+            // If countdown finished — show zeroes
+            if (gap < 0) {
+                days = hours = minutes = seconds = 0;
+            }
+
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        };
+
+        setInterval(countdown, 1000);
+
+    </script>
+
+</body>
+
+</html>
